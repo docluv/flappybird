@@ -1,0 +1,8 @@
+CACHE MANIFEST
+
+        "/",
+        "assets/bird.png",
+        "assets/cloud.png",
+        "assets/ground.png",
+        "assets/pipe.png",
+        "vendor/libs/class.js"
