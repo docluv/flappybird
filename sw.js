@@ -1,4 +1,5 @@
-var version = "1.0",
+const version = "1.0",
+    preCache = "PRECACHE-" + version,
     cacheList = [
         "/",
         "assets/bird.png",
@@ -10,12 +11,14 @@ var version = "1.0",
 
 /*  Service Worker Event Handlers */
 
-self.addEventListener("install", function (event) {
+self.addEventListener("install", event => {
 
     console.log("Installing the service worker!");
 
-    caches.open("PRECACHE")
-        .then(function (cache) {
+    self.skipWaiting();
+
+    caches.open(preCache)
+        .then(cache => {
 
             cache.addAll(cacheList);
 
@@ -33,14 +36,14 @@ self.addEventListener("fetch", function (event) {
 
     event.respondWith(
         caches.match(event.request)
-            .then(function (response) {
+        .then(function (response) {
 
-                if (response) {
-                    return response;
-                }
+            if (response) {
+                return response;
+            }
 
-                return fetch(event.request);
-            })
+            return fetch(event.request);
+        })
     );
 
 });

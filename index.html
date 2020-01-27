@@ -9,6 +9,10 @@
     <link rel="manifest" href="manifest.json">
 
     <link rel="icon" type="image/png" href="favicon-48-48.png">
+    <link rel="apple-touch-icon" href="meta/ios/ios-appicon-180-180.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#DFD6D9">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
 
     <style>
         body {
@@ -511,7 +515,8 @@
 
         if ('serviceWorker' in navigator) {
             
-            navigator.serviceWorker.register('/sw.js').then(function (registration) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(function (registration) {
                 // Registration was successful
 
                 console.log('ServiceWorker registration successful with scope: ', registration.scope);
